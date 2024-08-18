@@ -1,9 +1,6 @@
-import 'dart:ui';
+import 'dart:async';
 
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter/widgets.dart';
-
 import 'myWidgets.dart';
 
 class OyunEkrani extends StatefulWidget {
@@ -14,19 +11,32 @@ class OyunEkrani extends StatefulWidget {
 }
 
 class _OyunEkraniState extends State<OyunEkrani> {
-  int sure = 10;
+  int zaman = 10;
   int skor = 5;
   int pas = 3;
+  void zamanAzaltma() {
+    Timer.periodic(const Duration(seconds: 1), (timer) {
+      print(timer.tick);
+      setState(() {
+        if (zaman <= 0) {
+          timer.cancel();
+        } else {
+          zaman--;
+          timer.cancel();
+        }
+      });
+    });
+  }
+
   @override
   Widget build(BuildContext context) {
+    zamanAzaltma();
     return MaterialApp(
       home: Scaffold(
         body: SafeArea(
           child: Center(
             child: Container(
               child: Column(
-                crossAxisAlignment: CrossAxisAlignment.center,
-                mainAxisAlignment: MainAxisAlignment.center,
                 children: [
                   Expanded(
                     flex: 1,
@@ -34,30 +44,30 @@ class _OyunEkraniState extends State<OyunEkrani> {
                       crossAxisAlignment: CrossAxisAlignment.stretch,
                       children: [
                         OyunUstBilgi(
-                          deger: sure,
+                          deger: zaman,
                           renk: Colors.blueGrey,
                           metin: 'Kalan Süre',
                         ),
                         OyunUstBilgi(
                           deger: skor,
                           renk: Colors.lightGreenAccent,
-                          metin: 'Kalan Süre',
+                          metin: 'Skor',
                         ),
                         OyunUstBilgi(
                           deger: pas,
                           renk: Colors.pinkAccent,
-                          metin: 'Kalan Süre',
+                          metin: 'Pas Sayısı',
                         ),
                       ],
                     ),
                   ),
-                  Expanded(
+                  const Expanded(
                     flex: 10,
                     child: Card(
                       margin: EdgeInsets.all(100),
                       color: Colors.blue,
                       child: Padding(
-                          padding: const EdgeInsets.all(16.0),
+                          padding: EdgeInsets.all(16.0),
                           child: Text(
                             'kelimelerin görüneceği alan',
                             textAlign: TextAlign.center,
