@@ -1,9 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:tabu/myWidgets.dart';
 import 'package:tabu/oyunEkrani.dart';
+import 'package:tabu/skorboard.dart';
 
 void main() {
-  runApp(OyunEkrani());
+  runApp(Skorboard());
 }
 
 class MyApp extends StatelessWidget {
