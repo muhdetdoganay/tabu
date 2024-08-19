@@ -1,6 +1,7 @@
 import 'dart:async';
 
 import 'package:flutter/material.dart';
+import 'Takim.dart';
 import 'myWidgets.dart';
 
 class OyunEkrani extends StatefulWidget {
@@ -13,20 +14,8 @@ class OyunEkrani extends StatefulWidget {
 class _OyunEkraniState extends State<OyunEkrani> {
   int zaman = 10;
   int skor = 5;
-  int pas = 3;
-  void zamanAzaltma() {
-    Timer.periodic(const Duration(seconds: 1), (timer) {
-      print(timer.tick);
-      setState(() {
-        if (zaman <= 0) {
-          timer.cancel();
-        } else {
-          zaman--;
-          timer.cancel();
-        }
-      });
-    });
-  }
+  int pas = 4;
+  Takim tkm = new Takim('sad', 5);
 
   @override
   Widget build(BuildContext context) {
@@ -49,12 +38,12 @@ class _OyunEkraniState extends State<OyunEkrani> {
                           metin: 'Kalan Süre',
                         ),
                         OyunUstBilgi(
-                          deger: skor,
+                          deger: tkm.getSkor(),
                           renk: Colors.lightGreenAccent,
                           metin: 'Skor',
                         ),
                         OyunUstBilgi(
-                          deger: pas,
+                          deger: tkm.pas,
                           renk: Colors.pinkAccent,
                           metin: 'Pas Sayısı',
                         ),
@@ -83,16 +72,20 @@ class _OyunEkraniState extends State<OyunEkrani> {
                           metin: 'Doğru',
                           renk: Colors.green,
                           secim: 1,
+                          tkm: tkm,
                         ),
                         altButton(
                           metin: 'Pas',
                           renk: Colors.grey,
                           secim: 2,
+                          pas: tkm.pas,
+                          tkm: tkm,
                         ),
                         altButton(
                           metin: 'Yanlış',
                           renk: Colors.red,
                           secim: 0,
+                          tkm: tkm,
                         )
                       ],
                     ),
@@ -104,5 +97,17 @@ class _OyunEkraniState extends State<OyunEkrani> {
         ),
       ),
     );
+  }
+
+  void zamanAzaltma() {
+    Timer.periodic(const Duration(seconds: 1), (timer) {
+      setState(() {
+        if (zaman <= 0) {
+          timer.cancel();
+        } else {
+          zaman--;
+        }
+      });
+    });
   }
 }
