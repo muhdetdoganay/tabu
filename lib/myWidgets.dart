@@ -6,10 +6,16 @@ import 'package:tabu/Takim.dart';
 class isimAlma extends StatelessWidget {
   late String ad, hint;
   late bool focus;
-  isimAlma({required String ad, required String hint, required bool focus}) {
+  late Takim tkm;
+  isimAlma(
+      {required String ad,
+      required String hint,
+      required bool focus,
+      required Takim tkm}) {
     this.ad = ad;
     this.focus = focus;
     this.hint = hint;
+    this.tkm = tkm;
   }
 
   @override
@@ -22,7 +28,7 @@ class isimAlma extends StatelessWidget {
         decoration: InputDecoration(hintText: hint),
         autofillHints: Characters(ad),
         onChanged: (String ad) {
-          print(ad);
+          tkm.setAd(ad);
         },
       ),
     );
