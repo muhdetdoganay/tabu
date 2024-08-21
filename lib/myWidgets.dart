@@ -95,7 +95,7 @@ class _altButtonState extends State<altButton> {
                 widget.tkm?.skorArti();
               } else if (widget.secim == 0) {
                 widget.tkm?.skorEksi();
-              } else if (widget.secim == 2 && widget.tkm!.pas > 0) {
+              } else if (widget.secim == 2 && widget.pas > 0) {
                 widget.tkm?.pas--;
                 print(widget.pas);
               }

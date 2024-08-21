@@ -1,11 +1,15 @@
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:tabu/main.dart';
 
+import 'Takim.dart';
 import 'myWidgets.dart';
 import 'oyunEkrani.dart';
 
 class Skorboard extends StatelessWidget {
-  const Skorboard({super.key});
+  Skorboard({super.key, required this.tur, required this.tkm});
+  int tur;
+  List<Takim> tkm;
 
   @override
   Widget build(BuildContext context) {
@@ -20,37 +24,63 @@ class Skorboard extends StatelessWidget {
                   height: 10,
                 ),
                 skors(
-                  metin: 'Takım 1',
+                  metin: tkm[0].getAd(),
                   renk: Colors.deepPurple,
-                  deger: 5,
+                  deger: tkm[0].getSkor(),
                 ),
                 skors(
-                  metin: 'Takım 2',
+                  metin: tkm[1].getAd(),
                   renk: Colors.deepOrange,
-                  deger: 6,
+                  deger: tkm[1].getSkor(),
                 ),
-                Padding(
-                  padding: const EdgeInsets.symmetric(horizontal: 100.0),
-                  child: OutlinedButton(
-                    onPressed: () {
-                      Navigator.of(context).push(
-                        MaterialPageRoute(
-                          builder: (context) => MyApp(),
+                Row(
+                  children: [
+                    Expanded(
+                      child: OutlinedButton(
+                        onPressed: () {
+                          Navigator.of(context).pushAndRemoveUntil(
+                              MaterialPageRoute(
+                                builder: (context) =>
+                                    OyunEkrani(tur: tur + 1, tkm: tkm),
+                              ),
+                              (Route<dynamic> route) => false);
+                        },
+                        style: ButtonStyle(
+                          backgroundColor:
+                              MaterialStatePropertyAll<Color>(Colors.teal),
                         ),
-                      );
-                    },
-                    style: ButtonStyle(
-                      backgroundColor:
-                          MaterialStatePropertyAll<Color>(Colors.teal),
-                    ),
-                    child: Text(
-                      'İLERLE',
-                      style: TextStyle(
-                        color: Colors.white,
-                        fontSize: 20,
+                        child: Text(
+                          'İLERLE',
+                          style: TextStyle(
+                            color: Colors.white,
+                            fontSize: 20,
+                          ),
+                        ),
                       ),
                     ),
-                  ),
+                    Expanded(
+                      child: OutlinedButton(
+                        onPressed: () {
+                          Navigator.of(context).pushAndRemoveUntil(
+                              MaterialPageRoute(
+                                builder: (context) => MyApp(),
+                              ),
+                              (Route<dynamic> route) => false);
+                        },
+                        style: ButtonStyle(
+                          backgroundColor:
+                              MaterialStatePropertyAll<Color>(Colors.teal),
+                        ),
+                        child: Text(
+                          'BİTİR',
+                          style: TextStyle(
+                            color: Colors.white,
+                            fontSize: 20,
+                          ),
+                        ),
+                      ),
+                    ),
+                  ],
                 ),
               ]),
         ),

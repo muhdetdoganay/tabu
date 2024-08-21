@@ -25,9 +25,9 @@ class _OyunEkraniState extends State<OyunEkrani> {
 
   @override
   void initState() {
-    sira = widget.tur + 1;
     super.initState();
-    sira = sira % 2;
+    sira = (widget.tur) % 2;
+    widget.tkm[sira].pas = 3;
     ad = widget.tkm[sira].getAd();
     zamanAzaltma();
   }
@@ -98,7 +98,7 @@ class _OyunEkraniState extends State<OyunEkrani> {
                         metin: 'Yanlış',
                         renk: Colors.red,
                         secim: 0,
-                        tkm: widget.tkm[1],
+                        tkm: widget.tkm[sira],
                       )
                     ],
                   ),
@@ -117,7 +117,10 @@ class _OyunEkraniState extends State<OyunEkrani> {
         if (zaman <= 0) {
           Navigator.of(context).push(
             MaterialPageRoute(
-              builder: (context) => Skorboard(),
+              builder: (context) => Skorboard(
+                tur: widget.tur,
+                tkm: widget.tkm,
+              ),
             ),
           );
 

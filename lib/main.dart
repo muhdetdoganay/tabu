@@ -26,6 +26,7 @@ class AnaSayfa extends StatelessWidget {
   final Takim tkm2 = Takim();
   final List<Takim> tkmList = [];
   final String ad = '';
+  final String ad2 = '';
 
   @override
   Widget build(BuildContext context) {
@@ -36,16 +37,16 @@ class AnaSayfa extends StatelessWidget {
             mainAxisAlignment: MainAxisAlignment.center,
             children: [
               isimAlma(
-                ad: ad,
+                ad: tkm1.getAd(),
                 hint: 'TAKIM 1 İsmini girin',
                 focus: true,
-                tkm: tkm2,
+                tkm: tkm1,
               ),
               SizedBox(
                 height: 20,
               ),
               isimAlma(
-                ad: ad,
+                ad: tkm2.getAd(),
                 hint: 'TAKIM 2 İsmini girin',
                 focus: false,
                 tkm: tkm2,
