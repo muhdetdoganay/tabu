@@ -1,4 +1,3 @@
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:tabu/main.dart';
 
@@ -20,7 +19,7 @@ class Skorboard extends StatelessWidget {
               crossAxisAlignment: CrossAxisAlignment.stretch,
               mainAxisAlignment: MainAxisAlignment.center,
               children: [
-                SizedBox(
+                const SizedBox(
                   height: 10,
                 ),
                 skors(
@@ -45,11 +44,11 @@ class Skorboard extends StatelessWidget {
                               ),
                               (Route<dynamic> route) => false);
                         },
-                        style: ButtonStyle(
+                        style: const ButtonStyle(
                           backgroundColor:
-                              MaterialStatePropertyAll<Color>(Colors.teal),
+                              WidgetStatePropertyAll<Color>(Colors.teal),
                         ),
-                        child: Text(
+                        child: const Text(
                           'İLERLE',
                           style: TextStyle(
                             color: Colors.white,
@@ -63,15 +62,15 @@ class Skorboard extends StatelessWidget {
                         onPressed: () {
                           Navigator.of(context).pushAndRemoveUntil(
                               MaterialPageRoute(
-                                builder: (context) => MyApp(),
+                                builder: (context) => const MyApp(),
                               ),
                               (Route<dynamic> route) => false);
                         },
-                        style: ButtonStyle(
+                        style: const ButtonStyle(
                           backgroundColor:
-                              MaterialStatePropertyAll<Color>(Colors.teal),
+                              WidgetStatePropertyAll<Color>(Colors.teal),
                         ),
-                        child: Text(
+                        child: const Text(
                           'BİTİR',
                           style: TextStyle(
                             color: Colors.white,

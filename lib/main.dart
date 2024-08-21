@@ -1,12 +1,16 @@
+import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
 import 'package:tabu/myWidgets.dart';
 import 'package:tabu/oyunEkrani.dart';
-import 'package:tabu/skorboard.dart';
 
 import 'Takim.dart';
 
-void main() {
-  runApp(MyApp());
+void main() async {
+  WidgetsFlutterBinding.ensureInitialized();
+  if (Firebase.apps.isEmpty) {
+    await Firebase.initializeApp();
+  }
+  runApp(const MyApp());
 }
 
 class MyApp extends StatelessWidget {
@@ -42,7 +46,7 @@ class AnaSayfa extends StatelessWidget {
                 focus: true,
                 tkm: tkm1,
               ),
-              SizedBox(
+              const SizedBox(
                 height: 20,
               ),
               isimAlma(
@@ -51,7 +55,7 @@ class AnaSayfa extends StatelessWidget {
                 focus: false,
                 tkm: tkm2,
               ),
-              SizedBox(
+              const SizedBox(
                 height: 20,
               ),
               ElevatedButton(
@@ -67,13 +71,12 @@ class AnaSayfa extends StatelessWidget {
                     ),
                   );
                 },
-                child: Text(
+                style: ButtonStyle(
+                  backgroundColor: WidgetStateProperty.all(Colors.indigoAccent),
+                ),
+                child: const Text(
                   'BAŞLA',
                   style: TextStyle(color: Colors.white70),
-                ),
-                style: ButtonStyle(
-                  backgroundColor:
-                      MaterialStateProperty.all(Colors.indigoAccent),
                 ),
               ),
             ],

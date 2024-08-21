@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "817680983436",
+    "project_id": "tabu-b5a5c",
+    "storage_bucket": "tabu-b5a5c.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:817680983436:android:ff6078df3accbbe43a22a9",
+        "android_client_info": {
+          "package_name": "com.example.tabu"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCJPaiaBx8LJva1dOwzevs2ybMmo_7FfYk"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

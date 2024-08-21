@@ -1,4 +1,5 @@
 import 'dart:async';
+import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
 import 'package:tabu/skorboard.dart';
 import 'Takim.dart';
@@ -19,6 +20,7 @@ class OyunEkrani extends StatefulWidget {
 }
 
 class _OyunEkraniState extends State<OyunEkrani> {
+  final _firestore = FirebaseFirestore.instance;
   int zaman = 10;
   late int sira;
   late String ad;
@@ -34,11 +36,15 @@ class _OyunEkraniState extends State<OyunEkrani> {
 
   @override
   Widget build(BuildContext context) {
+    CollectionReference kelime = _firestore.collection('tabu');
+    var kitap = kelime.doc('Kitap');
     return Scaffold(
       body: SafeArea(
         child: Center(
           child: Container(
             child: Column(
+              crossAxisAlignment: CrossAxisAlignment.stretch,
+              mainAxisAlignment: MainAxisAlignment.center,
               children: [
                 Expanded(
                   flex: 1,
@@ -66,14 +72,26 @@ class _OyunEkraniState extends State<OyunEkrani> {
                 Expanded(
                   flex: 10,
                   child: Card(
-                    margin: EdgeInsets.all(100),
+                    margin: const EdgeInsets.symmetric(
+                        horizontal: 40, vertical: 40),
                     color: Colors.blue,
                     child: Padding(
-                        padding: EdgeInsets.all(16.0),
-                        child: Text(
-                          '$ad',
-                          textAlign: TextAlign.center,
-                        )),
+                      padding: const EdgeInsets.all(0.0),
+                      child: Column(
+                        crossAxisAlignment: CrossAxisAlignment.stretch,
+                        mainAxisAlignment: MainAxisAlignment.center,
+                        children: [
+                          Text(
+                            ad,
+                            textAlign: TextAlign.center,
+                          ),
+                          Text(
+                            '${kitap.id}',
+                            textAlign: TextAlign.center,
+                          )
+                        ],
+                      ),
+                    ),
                   ),
                 ),
                 Expanded(

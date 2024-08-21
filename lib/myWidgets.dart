@@ -1,4 +1,3 @@
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:tabu/Takim.dart';
 
@@ -8,7 +7,8 @@ class isimAlma extends StatelessWidget {
   late bool focus;
   late Takim tkm;
   isimAlma(
-      {required String ad,
+      {super.key,
+      required String ad,
       required String hint,
       required bool focus,
       required Takim tkm}) {
@@ -21,7 +21,7 @@ class isimAlma extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Card(
-      margin: EdgeInsetsDirectional.symmetric(horizontal: 40),
+      margin: const EdgeInsetsDirectional.symmetric(horizontal: 40),
       color: Colors.white70,
       child: TextField(
         autofocus: focus,
@@ -60,7 +60,7 @@ class OyunUstBilgi extends StatelessWidget {
         child: Text(
           textAlign: TextAlign.center,
           '$metin: $deger',
-          style: TextStyle(fontSize: textStyle, color: this.trenk),
+          style: TextStyle(fontSize: textStyle, color: trenk),
         ),
       ),
     ));
@@ -69,7 +69,8 @@ class OyunUstBilgi extends StatelessWidget {
 
 class altButton extends StatefulWidget {
   altButton(
-      {required this.metin,
+      {super.key,
+      required this.metin,
       required this.renk,
       this.secim,
       this.tkm,
@@ -101,10 +102,10 @@ class _altButtonState extends State<altButton> {
               }
             });
           },
-          child: Text(widget.metin),
           style: ButtonStyle(
-            backgroundColor: MaterialStatePropertyAll<Color>(widget.renk),
-          )),
+            backgroundColor: WidgetStatePropertyAll<Color>(widget.renk),
+          ),
+          child: Text(widget.metin)),
     );
   }
 }
@@ -129,13 +130,13 @@ class skors extends StatelessWidget {
         margin: const EdgeInsets.fromLTRB(10, 10, 10, 20),
         decoration: BoxDecoration(
           borderRadius: BorderRadius.circular(20),
-          color: this.renk,
+          color: renk,
         ),
         alignment: Alignment.center,
         child: Text(
           '$metin $deger',
           textAlign: TextAlign.center,
-          style: TextStyle(
+          style: const TextStyle(
             fontSize: 70,
             color: Colors.white,
           ),

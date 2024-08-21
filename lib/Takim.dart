@@ -3,15 +3,15 @@ class Takim {
   int _skor = 0;
   int pas = 3;
   void skorArti() {
-    this._skor++;
+    _skor++;
   }
 
   void setAd(String ad) {
-    this._ad = ad;
+    _ad = ad;
   }
 
   void skorEksi() {
-    this._skor--;
+    _skor--;
   }
 
   String getAd() {
