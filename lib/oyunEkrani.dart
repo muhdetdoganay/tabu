@@ -1,9 +1,13 @@
 import 'dart:async';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
+import 'package:tabu/Sayi.dart';
 import 'package:tabu/skorboard.dart';
+import 'AltButon.dart';
 import 'Takim.dart';
-import 'myWidgets.dart';
+import 'UstBilgi.dart';
+import 'VeriCek.dart';
+import 'IsimAlma.dart';
 
 class OyunEkrani extends StatefulWidget {
   final int tur;
@@ -24,6 +28,7 @@ class _OyunEkraniState extends State<OyunEkrani> {
   int zaman = 10;
   late int sira;
   late String ad;
+  SayiRa sayi = SayiRa();
 
   @override
   void initState() {
@@ -37,7 +42,6 @@ class _OyunEkraniState extends State<OyunEkrani> {
   @override
   Widget build(BuildContext context) {
     CollectionReference kelime = _firestore.collection('tabu');
-    var kitap = kelime.doc('Kitap');
     return Scaffold(
       body: SafeArea(
         child: Center(
@@ -78,17 +82,49 @@ class _OyunEkraniState extends State<OyunEkrani> {
                     child: Padding(
                       padding: const EdgeInsets.all(0.0),
                       child: Column(
-                        crossAxisAlignment: CrossAxisAlignment.stretch,
+                        crossAxisAlignment: CrossAxisAlignment.center,
                         mainAxisAlignment: MainAxisAlignment.center,
                         children: [
-                          Text(
-                            ad,
-                            textAlign: TextAlign.center,
+                          Expanded(
+                            child: Text(
+                              ad,
+                              textAlign: TextAlign.center,
+                              style: TextStyle(color: Colors.white),
+                            ),
                           ),
-                          Text(
-                            '${kitap.id}',
-                            textAlign: TextAlign.center,
-                          )
+                          VeriCek(
+                            main: kelime,
+                            kelime: 'isim',
+                            sayi: sayi.sayiGoster(),
+                          ),
+                          Divider(
+                            thickness: 1,
+                          ),
+                          VeriCek(
+                            main: kelime,
+                            kelime: 'kelime1',
+                            sayi: sayi.sayiGoster(),
+                          ),
+                          VeriCek(
+                            main: kelime,
+                            kelime: 'kelime2',
+                            sayi: sayi.sayiGoster(),
+                          ),
+                          VeriCek(
+                            main: kelime,
+                            kelime: 'kelime3',
+                            sayi: sayi.sayiGoster(),
+                          ),
+                          VeriCek(
+                            main: kelime,
+                            kelime: 'kelime4',
+                            sayi: sayi.sayiGoster(),
+                          ),
+                          VeriCek(
+                            main: kelime,
+                            kelime: 'kelime5',
+                            sayi: sayi.sayiGoster(),
+                          ),
                         ],
                       ),
                     ),
@@ -104,18 +140,21 @@ class _OyunEkraniState extends State<OyunEkrani> {
                         renk: Colors.green,
                         secim: 1,
                         tkm: widget.tkm[sira],
+                        sayi: sayi,
                       ),
                       altButton(
                         metin: 'Pas',
                         renk: Colors.grey,
                         secim: 2,
                         pas: widget.tkm[sira].pas,
+                        sayi: sayi,
                         tkm: widget.tkm[sira],
                       ),
                       altButton(
                         metin: 'Yanlış',
                         renk: Colors.red,
                         secim: 0,
+                        sayi: sayi,
                         tkm: widget.tkm[sira],
                       )
                     ],

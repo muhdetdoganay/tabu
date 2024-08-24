@@ -1,8 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:tabu/main.dart';
 
+import 'Skors.dart';
 import 'Takim.dart';
-import 'myWidgets.dart';
+import 'IsimAlma.dart';
 import 'oyunEkrani.dart';
 
 class Skorboard extends StatelessWidget {

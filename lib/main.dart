@@ -1,6 +1,6 @@
 import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
-import 'package:tabu/myWidgets.dart';
+import 'package:tabu/IsimAlma.dart';
 import 'package:tabu/oyunEkrani.dart';
 
 import 'Takim.dart';
